@@ -9,39 +9,35 @@
                 <div class="card-body">
                     <form action="{{ route('report.index') }}" method="get">
                         @csrf
-                        <div class="form-group">
-                            <label>Product</label>
-                            <select class="form-control select2 @error('product') is-invalid @enderror" name="product">
-                                    <option disabled selected>--none--</option>
-                                @foreach ($products as $p )
-                                    <option value="{{$p->id}}" {{ old('product') == $p->id ? ' selected' : '' }}>{{ $p->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('product')
-                            <small class="form-text  text-danger font-weight-bold">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <!-- <div class="form-group">
-                            <label>Status</label>
-                            <select class="form-control @error('status') is-invalid @enderror" name="status">
-                                <option value="Unused" {{ old('status') == 'Unused' ? ' selected' : '' }}>Unused
-                                </option>
-                                <option value="Used" {{ old('status') == 'Used' ? ' selected' : '' }}>Used
-                                </option>
-                            </select>
-                            @error('status')
-                            <small class="form-text  text-danger font-weight-bold">{{ $message }}</small>
-                            @enderror
-                        </div> -->
-                        <div class="form-group">
-                            <label for="reportDate">Date range</label>
-                            <input type="text" class="form-control @error('reportDate') is-invalid @enderror"
-                                id="reportDate" name="reportDate" value="{{ old('reportDate') }}">
-                            @error('reportDate')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Product</label>
+                                    <select class="form-control select2 @error('product') is-invalid @enderror"
+                                        name="product">
+                                        <option disabled selected>--none--</option>
+                                        @foreach ($products as $p )
+                                        <option value="{{$p->id}}" {{ old('product') == $p->id ? ' selected' : '' }}>
+                                            {{ $p->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('product')
+                                    <small class="form-text  text-danger font-weight-bold">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="reportDate">Date range</label>
+                                    <input type="text" class="form-control @error('reportDate') is-invalid @enderror"
+                                        id="reportDate" name="reportDate" value="{{ old('reportDate') }}">
+                                    @error('reportDate')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-sm float-right">Submit</button>
                     </form>
