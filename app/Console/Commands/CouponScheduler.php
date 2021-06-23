@@ -42,7 +42,7 @@ class CouponScheduler extends Command
         $product = Product::with('coupon')->get();
         foreach ($product as $p)
         {
-            if($p->coupon->where('status', 'Unused')->count() <= 100)
+            if($p->coupon->where('status', 'Unused')->count() <= 20)
             {
                 $data = [
                     'product' => $p->name,

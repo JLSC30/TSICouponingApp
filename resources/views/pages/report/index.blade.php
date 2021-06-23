@@ -10,6 +10,18 @@
                     <form action="{{ route('report.index') }}" method="get">
                         @csrf
                         <div class="form-group">
+                            <label>Product</label>
+                            <select class="form-control @error('product') is-invalid @enderror" name="product">
+                                    <option disabled selected>--none--</option>
+                                @foreach ($products as $p )
+                                    <option value="{{$p->id}}" {{ old('product') == $p->id ? ' selected' : '' }}>{{ $p->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('product')
+                            <small class="form-text  text-danger font-weight-bold">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <!-- <div class="form-group">
                             <label>Status</label>
                             <select class="form-control @error('status') is-invalid @enderror" name="status">
                                 <option value="Unused" {{ old('status') == 'Unused' ? ' selected' : '' }}>Unused
@@ -20,7 +32,7 @@
                             @error('status')
                             <small class="form-text  text-danger font-weight-bold">{{ $message }}</small>
                             @enderror
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="reportDate">Date range</label>
                             <input type="text" class="form-control @error('reportDate') is-invalid @enderror"
@@ -41,6 +53,7 @@
                     <table id="reporttbl" class="table table-bordered table-striped display responsive nowrap">
                         <thead>
                             <tr>
+                                <th>Product</th>
                                 <th>Coupon</th>
                                 <th>Status</th>
                                 <th>Sold at</th>
@@ -49,6 +62,7 @@
                         <tbody>
                             @foreach ($report as $i )
                             <tr>
+                                <td>{{$i->product->name}}</td>
                                 <td>{{$i->code}}</td>
                                 <td>{{$i->status}}</td>
                                 <td>{{$i->updated_at->format('M-d-Y')}}</td>
