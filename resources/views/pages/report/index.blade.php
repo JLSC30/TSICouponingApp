@@ -11,7 +11,7 @@
                         @csrf
                         <div class="form-group">
                             <label>Product</label>
-                            <select class="form-control @error('product') is-invalid @enderror" name="product">
+                            <select class="form-control select2 @error('product') is-invalid @enderror" name="product">
                                     <option disabled selected>--none--</option>
                                 @foreach ($products as $p )
                                     <option value="{{$p->id}}" {{ old('product') == $p->id ? ' selected' : '' }}>{{ $p->name }}</option>
