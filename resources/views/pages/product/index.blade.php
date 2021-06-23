@@ -8,7 +8,7 @@
                 <div class="card-header">Products</div>
 
                 <div class="card-body">
-                    <table id="alltbl" class="table table-bordered table-striped display responsive nowrap">
+                    <table id="alltbl" class="table table-bordered table-striped display responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
