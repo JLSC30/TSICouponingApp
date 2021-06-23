@@ -48,6 +48,7 @@ require("select2/dist/js/select2.min.js");
 $(".select2").select2({
     theme: "bootstrap4",
     allowClear: true,
+    placeholder: "Please select a product"
 });
 
 // Date Picker

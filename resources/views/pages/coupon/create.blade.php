@@ -22,7 +22,7 @@
                     <label>Product</label>
                     <select class="form-control select2  @error('product_id') is-invalid @enderror" name="product_id"
                         style="width: 100%;">
-                        <option disabled selected>--none--</option>
+                        <option></option>
                         @foreach ($products as $i )
                         <option value="{{ $i->id }}" {{ old('product_id') == $i->id ? 'selected' : '' }}>
                             {{ $i->name }}

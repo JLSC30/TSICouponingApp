@@ -15,7 +15,8 @@
                                     <label>Product</label>
                                     <select class="form-control select2 @error('product') is-invalid @enderror"
                                         name="product" style="width: 100%;">
-                                        <option disabled selected>--none--</option>
+                                        <!-- <option disabled selected>--none--</option> -->
+                                        <option></option>
                                         @foreach ($products as $p )
                                         <option value="{{$p->id}}" {{ old('product') == $p->id ? ' selected' : '' }}>
                                             {{ $p->name }}</option>
