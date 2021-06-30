@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,5 +30,6 @@ class AppServiceProvider extends ServiceProvider
                            ->mixedCase()
                            ->uncompromised();
         });
+        Schema::defaultStringLength(191);
     }
 }

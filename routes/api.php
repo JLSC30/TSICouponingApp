@@ -24,7 +24,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::prefix('v1/coupon')->group(function () {
-        Route::put('/{sku}', [CouponController::class, 'update']);
+        // Route::put('/{sku}', [CouponController::class, 'update']);
+        Route::put('/{sku}/{count}', [CouponController::class, 'ac8dcdb2']);
     });
 });
 Route::fallback(function(){

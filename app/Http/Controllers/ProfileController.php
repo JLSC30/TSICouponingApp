@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
@@ -65,12 +66,14 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $token = $user->createToken('Token for user account '.$user->name)->plainTextToken;
+        Log::info('Your API token is '. $token);
         return  redirect()->route('profile.index')->withApi('Your API Token Key has been generated. \n ' . $token);
     }
 
     public function deleteApiKey()
     {
-        auth()->user()->tokens()->delete();
+        $token = auth()->user()->tokens()->delete();
+        Log::info('Your API token deleted - '. $token);
         return  redirect()->route('profile.index')->withInfo('Your API Token Key has been deleted successfully.');
     }
 }
