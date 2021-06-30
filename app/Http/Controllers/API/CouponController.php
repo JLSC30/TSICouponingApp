@@ -67,7 +67,7 @@ class CouponController extends Controller
         if($product !== null)
         {
             Log::info('Selected product is '. $product->name);
-            $data = Coupon::where('product_id', $product->id)->where('status', 'Unused')->take($count)->get(['code']);
+            $data = Coupon::where('product_id', $product->id)->where('status', 'Unused')->take($count)->get(['id', 'code']);
             if($data === null)
             {
                 Log::info('No coupon found!');
@@ -85,10 +85,10 @@ class CouponController extends Controller
                     'sku'=> $sku,
                     'status' => 202,
                 ];
-
                 foreach($data as $i)
                 {
                     $i->update(['status' => 'Used']);
+                    Log::info('Coupon '. $i->code . ' status set to used.');
                 }
             }
         }    
