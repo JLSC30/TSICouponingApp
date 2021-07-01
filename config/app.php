@@ -15,6 +15,20 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Email Config for the Application
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'admin_email' => env('ADMIN_EMAIL', 'ucompleteme@trainstation.com.ph'),
+    'admin_name' => env('ADMIN_NAME', 'JLSC'),
+    'mail_username' => env('MAIL_USERNAME', 'admin@trainondemand.online'),
+
+
+    
     /*
     |--------------------------------------------------------------------------
     | Application Environment

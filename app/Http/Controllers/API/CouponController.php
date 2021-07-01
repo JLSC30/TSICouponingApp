@@ -73,7 +73,7 @@ class CouponController extends Controller
                 Log::info('No coupon found!');
                 $returnedData = [
                     'coupon' => null,
-                    'sku'=> $sku,
+                    // 'sku'=> $sku,
                     'status' => 404,
                 ];
             }
@@ -82,9 +82,11 @@ class CouponController extends Controller
                 Log::info('You generated '. $data->count() .' coupon out of '. $count .' for the product '. $product->name);
                 $returnedData = [
                     'coupon' => $data->toArray(),
-                    'sku'=> $sku,
+                    // 'coupon' => $data->append(['status' => 202])->toArray(),
+                    // 'sku'=> $sku,
                     'status' => 202,
                 ];
+                // dd($returnedData);
                 foreach($data as $i)
                 {
                     $i->update(['status' => 'Used']);
@@ -97,7 +99,7 @@ class CouponController extends Controller
             Log::info('No product found!');
             $returnedData = [
                 'coupon' => null,
-                'sku'=> $sku,
+                // 'sku'=> $sku,
                 'status' => 404,
             ];
         }  

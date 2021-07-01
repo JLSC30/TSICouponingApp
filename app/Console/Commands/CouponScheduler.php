@@ -49,9 +49,9 @@ class CouponScheduler extends Command
                     'count' => $p->coupon->where('status', 'Unused')->count(),
                 ];
                 Mail::send('pages.email.index', $data, function($message) {
-                    $message->to(env('ADMIN_EMAIL'), env('ADMIN_NAME'))->subject
+                    $message->to(config('app.admin_email'), config('app.admin_name'))->subject
                         ('Coupon App email alert');
-                    $message->from(env('MAIL_USERNAME'),env('MAIL_FROM_NAME'));
+                    $message->from(config('app.mail_username'), config('app.name'));
                 });
             }
             $this->info('Email alert successfully sent.');

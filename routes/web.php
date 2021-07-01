@@ -47,6 +47,24 @@ Route::group(['middleware' => 'auth'], function (){
     Route::resource('users', UserController::class, ['except'=>['show','create']]);
     Route::resource('report', ReportController::class, ['except'=>['create','store', 'show', 'edit', 'update', 'destroy']]);
 
-    Route::get('/sendAlert', [App\Http\Controllers\HomeController::class, 'triggerAlert'])->name('sendAlert');
+    // Route::get('/sendAlert', [App\Http\Controllers\HomeController::class, 'triggerAlert'])->name('sendAlert');
+
+    Route::get('/config-cache', function() {
+        $exitCode = Artisan::call('config:cache');
+        if (!$exitCode)
+        {
+            return redirect()->route('home');
+        }
+        abort('500');
+    })->name('config-cache');
+
+    Route::get('/optimize', function() {
+        $exitCode = Artisan::call('optimize');
+        if (!$exitCode)
+        {
+            return redirect()->route('home');
+        }
+        abort('500');
+    })->name('optimize');
 
 });
