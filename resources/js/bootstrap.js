@@ -26,12 +26,17 @@ require("datatables.net-buttons-bs4");
 // require("pdfmake/build/vfs_fonts");
 $("#alltbl").DataTable({
     responsive: true,
+    autoWidth: true,
+    "lengthMenu": [
+        [10, 15, 20, 50, 100, -1],
+        [10, 15, 20, 50, 100, "All"]
+    ],
 });
 
 $("#reporttbl").DataTable({
     "responsive": true,
     "lengthChange": false, 
-    "autoWidth": false,
+    "autoWidth": true,
     "buttons": [
         { extend: 'copy', className: 'btn btn-sm btn-dark mr-1' },
         { extend: 'csv', className: 'btn btn-sm btn-dark mr-1' },

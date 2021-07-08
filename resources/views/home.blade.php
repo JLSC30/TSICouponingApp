@@ -36,6 +36,7 @@ var myChart = new Chart(ctx, {
         {
             label: 'Used coupon',
             data: <?php echo json_encode($usedCoupon ?? '', JSON_NUMERIC_CHECK); ?>,
+            // data: @json($usedCoupon),
             backgroundColor: [
                 'rgba(40, 167, 69, 1)'
             ],
