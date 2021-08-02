@@ -15,6 +15,7 @@
                                 <th>Code</th>
                                 <th>Product</th>
                                 <th>Status</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -25,6 +26,14 @@
                                 <td>{{ $i->product->product_name() }}</td>
                                 <td>
                                     <span class="text-{{$i->status === 'Unused' ? 'success' : 'secondary'}}"><strong>{{ $i->status }}</strong></span>
+                                </td>
+                                <td>
+                                    @php
+                                        $product = $i->product->sku;
+                                        $public_runs = ['public', 'runs', 'public_runs'];
+                                        $contains = Illuminate\Support\Str::contains($product, $public_runs);
+                                    @endphp
+                                    <a href="{{ route('coupons.edit', $i->id) }}" class="btn btn-secondary btn-sm {{ $contains ? '' : 'disabled' }}">Edit</a>
                                 </td>
                             </tr>
                             @endforeach

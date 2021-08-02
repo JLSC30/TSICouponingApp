@@ -12,7 +12,6 @@
         "haruncpi/laravel-log-reader": "^1.0",
         "laravel/framework": "^8.40",
         "laravel/sanctum": "^2.11",
-        "laravel/telescope": "^4.5",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "maatwebsite/excel": "^3.1",

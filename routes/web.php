@@ -33,7 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => 'auth'], function (){
 
     Route::resource('products', ProductController::class);
-    Route::resource('coupons', CouponController::class, ['except'=>['show','create', 'update', 'destroy', 'edit']]);
+    Route::resource('coupons', CouponController::class, ['except'=>['show','create', 'destroy']]);
     Route::post('coupons/import', [CouponController::class, 'import'])->name('coupon.import');
     Route::get('coupons/unused', [CouponController::class, 'unused'])->name('coupons.unused');
     Route::get('coupons/used', [CouponController::class, 'used'])->name('coupons.used');

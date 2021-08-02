@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Coupon;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ReportController extends Controller
 {
@@ -23,8 +24,6 @@ class ReportController extends Controller
                 $status = 'Used';
                 
                 $explodedTxt = explode(" - ", $request->reportDate);
-                // $report = Coupon::where('status', $request->status)->whereBetween('updated_at', [$explodedTxt[0], $explodedTxt[1]])->with('product')->get();
-                // $report = Coupon::where([['product_id', '=', $request->product] ])->whereBetween('updated_at', [$explodedTxt[0], $explodedTxt[1]])->with('product')->get();
                 $report = Coupon::where('product_id', $request->product)->whereBetween('updated_at', [$explodedTxt[0], $explodedTxt[1]])->where('status', $status)->with('product')->get();
             }
             else
